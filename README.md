@@ -1,9 +1,11 @@
 # Fixedsys Excelsior font with programming ligatures
 
 ## Original copyright
-Created by Darien Valentine
+Created by Darien Valentine [@bathos](https://github.com/bathos)
 
-[Font website](http://www.fixedsysexcelsior.com)
+[Font website (dead)](http://www.fixedsysexcelsior.com)
+
+If you want to use this font commercially or otherwise check this issue out: [#21](https://github.com/kika/fixedsys/issues/21)
 
 ## It looks like this
 <img src="./images/sample.png" />
@@ -13,6 +15,9 @@ The compiled TTF binary font is on the Releases page.
 There are two versions provided:
 1. Default has =< and >= ligated into "less or equal" and "greater or equal"
 1. Alt version enables <= (replacing reverse fat arrow) and >= instead (closes #3)
+
+### What's up with the ALT version in the releases?
+See [this issue](https://github.com/kika/fixedsys/issues/3)
 
 ## Rationale
 I was always jealous for folks using [Fira Code](https://github.com/tonsky/FiraCode),
@@ -89,20 +94,8 @@ Courtesy of [@ForNeVeR](https://github.com/ForNeVeR):
    "workbench.fontAliasing": "none"
   ```
   
-  Which will make code editor look nice, but everything else in the VSCode UI - ugly. The solution to that is to modify the CSS for the VSCode itself, edit `/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/out/vs/workbench/workbench.main.css` file (you may want to reformat it) and add the following:
-  
-  ```css
-  .monaco-shell {
-    ...
-    -webkit-font-smoothing: antialiased !important;
-  }
-
-  ```
-  Here is one line "patch":
-  ```
-  perl -i.bak -pe 's/\.monaco-shell{(.*?)}/.monaco-shell{\1;-webkit-font-smoothing: antialiased !important;}/g' /Applications/Visual\ Studio\ Code.app/Contents/Resources/app/out/vs/workbench/workbench.main.css
-  ```
-  
+  Which will make code editor look nice, but everything else in the VSCode UI - ugly. The solution to that is to modify the CSS for the VSCode itself.
+[Here is the script that I keep more or less updated when VSCode changes the CSS](https://gist.github.com/kika/2b5a3ccf065a251a6a8cbcdca7d823cc)
   
 - Windows + Visual Studio 2015: works mostly okay, but `->` ligature doesn't work. That's a [known problem of WPF text renderer](https://github.com/tonsky/FiraCode/issues/259#issuecomment-243422144).
 - Windows + ConEmu: no ligatures at all. Powerline stuff works okay though, so font is usable even without ligatures. I'd recommend to set font cell width manually to 8 (otherwise it'll have problems determining proper places for line wrapping and rendering Far Manager UI): **Settings** → **Main** → **Main console font** group → select **Cell: 8** from the selector.
